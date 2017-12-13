@@ -1,6 +1,6 @@
 {
-  "name": "Single-Page-App",
-  "version": "1.0.0",
+  "name": "crossed-wires-ui",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,9 +8,8 @@
     "build": "webpack --progress --config webpack.prod.js",
     "lint:js": "eslint src/ webpack.*.js --cache"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Nando Peña",
+  "license": "MIT",
   "dependencies": {
     "mithril": "^1.1.5"
   },
@@ -30,8 +29,8 @@
     "file-loader": "^1.1.5",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.28.0",
-    "node-sass": "^4.5.0",
-    "sass-loader": "^6.0.3",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
     "style-loader": "^0.19.0",
     "uglifyjs-webpack-plugin": "^1.0.1",
     "webpack": "^3.7.1",

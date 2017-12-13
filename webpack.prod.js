@@ -10,12 +10,10 @@ module.exports = merge(common, {
     devtool: 'hidden-source-map',
     module: {
         rules: [{
-            test: /(\.css|\.scss)$/,
+            test: /(\.css)$/,
             use: ExtractTextPlugin.extract({
                 use: [{
                     loader: 'css-loader',
-                }, {
-                    loader: 'sass-loader',
                 }],
             }),
         }],

@@ -1,17 +1,18 @@
+import Login from './components/LoginPage'
+
 if (module.hot) {
-    module.hot.accept();
+    module.hot.accept()
 }
 
 if (process.env.NODE_ENV !== 'production') {
-    console.log('Looks like we are in development mode!');
+    console.log('In development mode!')
 }
 
+var IndexPage = require('../src/views/landing-page')
+var Splash = require('../src/views/splash-page')
 
-//Define your routes here
-var IndexPage = require('../src/views/landing-page');
-var Splash = require('../src/views/splash-page');
-
-m.route(document.body.querySelector('#root'), '/splash', {
+m.route(document.body.querySelector('#root'), '/login', {
+    '/login': Login,
     '/splash': Splash,
     '/index': IndexPage,
-});
+})

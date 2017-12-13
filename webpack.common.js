@@ -1,13 +1,10 @@
-const {
-    resolve,
-} = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { resolve } = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     context: resolve(__dirname, 'src'),
     entry: [
-        './styles/vendor-scss.js',
         './index.js',
     ],
     output: {
@@ -60,7 +57,7 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             minChunks: function(module) {
-                return module.context && module.context.indexOf('node_modules') !== -1;
+                return module.context && module.context.indexOf('node_modules') !== -1
             },
         }),
         new webpack.optimize.CommonsChunkPlugin({
@@ -69,4 +66,4 @@ module.exports = {
         }),
         new webpack.optimize.ModuleConcatenationPlugin(),
     ],
-};
+}
