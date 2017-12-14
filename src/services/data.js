@@ -1,16 +1,30 @@
-const url = 'https://firestore.googleapis.com/v1beta1/projects/crossed-wires/databases/(default)/documents/'
+class Firebase {
+    request () {
+        this.url = 'https://firestore.googleapis.com/v1beta1/projects/crossed-wires/databases/(default)/documents/'
+    }
 
-const stripFields = (item) => Object.keys(item).forEach(
-    (field) => item[field] = item[field][Object.keys(item[field])[0]]
-)
+    static stripFields (item) {
+        return Object.keys(item).forEach(
+            field => item[field] = item[field][Object.keys(item[field])[0]]
+        )
+    }
 
-const transform = (response) => {
-    return response.documents.reduce((acc, curr) => {
-        const key = curr.name.substr(curr.name.lastIndexOf('/') + 1)
-        stripFields(curr.fields)
-        acc[key] = curr.fields
-        return acc
-    }, {})
+    static transform (response) {
+        return response.documents.reduce((acc, curr) => {
+            const key = curr.name.substr(curr.name.lastIndexOf('/') + 1)
+            Firebase.stripFields(curr.fields)
+            acc[key] = curr.fields
+            return acc
+        }, {})
+    }
 }
 
-export { transform, url }
+class Api {
+    static request (resource, method='GET') {
+        const url = `http://localhost:8080/${resource}`
+        return m.request({ method: method, url: url })
+    }
+}
+
+
+export { Api, Firebase }

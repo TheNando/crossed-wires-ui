@@ -1,29 +1,6 @@
-import { transform, url } from '../../services/data'
+import LoginMeta from '../../services/LoginMeta'
 
 class SelectRobot {
-    constructor () {
-        this.index = 0
-        this.robots = []
-        this.showMenu = false
-    }
-
-    oninit () {
-        this.fetchRobots()
-    }
-
-    fetchRobots () {
-        return m
-            .request({
-                method: 'GET',
-                url: url + 'robots',
-            })
-            .then(transform)
-            .then(response => this.robots = Object.values(response))
-    }
-
-    get selected () {
-        return this.robots.length ? this.robots[this.index] : {}
-    }
 
     get selectedClass () {
         return '.selected' + (this.showMenu ? '.hidden' : '')
@@ -34,9 +11,8 @@ class SelectRobot {
     }
 
     selectRobot (index) {
-        this.index = index
+        LoginMeta.selectRobot(index)
         this.showMenu = false
-        this.data = this.robots[this.index]
     }
 
     view () {
@@ -46,11 +22,11 @@ class SelectRobot {
                 [
                     m('span.team-color'),
                     m('span.team-color'),
-                    this.selected.name,
+                    LoginMeta.selected.name,
                 ]
             ),
             m(this.menuClass,
-                this.robots.map(
+                LoginMeta.robots.map(
                     (robot, index) => m('.robot',
                         { onclick: () => this.selectRobot(index) },
                         [
