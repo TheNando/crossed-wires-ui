@@ -1,4 +1,4 @@
-import Login from './components/LoginPage'
+import LoginForm from './components/LoginPage'
 
 if (module.hot) {
     module.hot.accept()
@@ -12,7 +12,7 @@ var IndexPage = require('../src/views/landing-page')
 var Splash = require('../src/views/splash-page')
 
 m.route(document.body.querySelector('#root'), '/login', {
-    '/login': Login,
+    '/login': LoginForm,
     '/splash': Splash,
     '/index': IndexPage,
 })

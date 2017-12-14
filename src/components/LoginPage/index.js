@@ -1,6 +1,7 @@
 import SelectRobot from './SelectRobot'
+import LoginMeta from '../../services/LoginMeta'
 
-class Login {
+class LoginForm {
     view () {
         return m('login.login-container', [
             m('label', [
@@ -12,10 +13,10 @@ class Login {
                 m(SelectRobot),
             ]),
             m('label', 'handle'),
-            m('.handle', '{handle}'),
+            m('.handle', LoginMeta.handle),
             m('button', 'Submit'),
         ])
     }
 }
 
-export default Login
+export default LoginForm
