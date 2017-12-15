@@ -1,4 +1,4 @@
-import { Api } from '../data'
+import { Api } from './data'
 
 const LoginMeta = {
     index: 0,

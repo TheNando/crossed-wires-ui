@@ -1,16 +1,19 @@
 import SelectRobot from './SelectRobot'
 import LoginMeta from '../../services/LoginMeta'
+import './style.css'
 
-class LoginForm {
+
+class LoginPage {
     view () {
         return m('login.login-container', [
             m('label', [
-                'email',
+                m('i.typcn.typcn-mail'),
                 m('input[type=email][autofocus]'),
             ]),
             m('label', [
-                'team',
+                m('i.typcn.typcn-group'),
                 m(SelectRobot),
+                m('i.typcn.typcn-arrow-sorted-down'),
             ]),
             m('label', 'handle'),
             m('.handle', LoginMeta.handle),
@@ -19,4 +22,4 @@ class LoginForm {
     }
 }
 
-export default LoginForm
+export default LoginPage

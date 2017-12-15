@@ -1,9 +1,9 @@
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const common = require('./webpack.common.js');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const common = require('./webpack.common.js')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 
 module.exports = merge(common, {
@@ -22,7 +22,7 @@ module.exports = merge(common, {
         new CleanWebpackPlugin(['dist/*.*']),
         new ExtractTextPlugin({
             filename: (getPath) => {
-                return getPath('css/[name]-[contenthash].css');
+                return getPath('css/[name]-[contenthash].css')
             },
             allChunks: true,
         }),
