@@ -3,7 +3,7 @@ import LoginMeta from '../../services/LoginMeta'
 class SelectRobot {
 
     get selectedClass () {
-        return '.selected' + (this.showMenu ? '.hidden' : '')
+        return '.selected-robot' + (this.showMenu ? '.hidden' : '')
     }
 
     get menuClass () {
