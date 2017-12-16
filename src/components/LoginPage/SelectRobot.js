@@ -17,12 +17,13 @@ class SelectRobot {
 
     view () {
         return [
-            m(this.selectedClass,
+            m('.selected-robot',
                 { onclick: () => this.showMenu = true },
                 [
-                    m('span.team-color'),
-                    m('span.team-color'),
-                    LoginMeta.selected.name,
+                    m('span.team-color', {style:`background-color:${LoginMeta.selected.team}`}),
+                    m('span.team-color', {style:`background-color:${LoginMeta.selected.colorHex}`}),
+                    m('span.grow', LoginMeta.selected.name),
+                    m('i.typcn.typcn-arrow-sorted-down'),
                 ]
             ),
             m(this.menuClass,
@@ -30,9 +31,9 @@ class SelectRobot {
                     (robot, index) => m('.robot',
                         { onclick: () => this.selectRobot(index) },
                         [
-                            m('span.team-color', robot.team),
-                            m('span.team-color', robot.colorHex),
-                            robot.name,
+                            m('span.team-color', {style:`background-color:${robot.team}`}),
+                            m('span.team-color', {style:`background-color:${robot.colorHex}`}),
+                            m('span', robot.name),
                         ]
                     )
                 )

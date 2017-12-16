@@ -1,4 +1,5 @@
 import LoginPage from './components/LoginPage'
+import './app.css'
 import './media/typicons.css'
 
 if (module.hot) {

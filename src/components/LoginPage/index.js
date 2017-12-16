@@ -6,18 +6,20 @@ import './style.css'
 class LoginPage {
     view () {
         return m('login.login-container', [
+            m('.title', 'crossed wires'),
             m('label', [
-                m('i.typcn.typcn-mail'),
-                m('input[type=email][autofocus]'),
+                m('i.typcn.typcn-user'),
+                m('input[type=email][placeholder=first.last][autofocus]'),
             ]),
             m('label', [
                 m('i.typcn.typcn-group'),
                 m(SelectRobot),
-                m('i.typcn.typcn-arrow-sorted-down'),
             ]),
-            m('label', 'handle'),
-            m('.handle', LoginMeta.handle),
-            m('button', 'Submit'),
+            m('label', [
+                m('i.typcn.typcn-tag'),
+                m(`input[disabled][value=${LoginMeta.handle}]`),
+            ]),
+            m('button', 'submit'),
         ])
     }
 }
