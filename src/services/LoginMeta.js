@@ -13,6 +13,9 @@ const LoginMeta = {
     },
 }
 
-Api.request('login').then(response => Object.assign(LoginMeta, response))
+Api.request('login').then(response => {
+    Object.assign(LoginMeta, response)
+    LoginMeta.robots = LoginMeta.robots.sort((r1, r2) => r1.team > r2.team)
+})
 
 export default LoginMeta
