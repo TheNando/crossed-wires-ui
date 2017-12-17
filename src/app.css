@@ -11,14 +11,30 @@ body {
     height: 100vh;
 }
 main {
-    background-color: rgb(39, 174, 96); /* #40a03d; */
-    height: calc(100vh);
+    background-color:  #40a03d; /*rgb(39, 174, 96); */
+    height: 100vh;
     max-width: calc((9/16) * (100vh));
     margin: 0 auto;
+}
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.content {
+    display: flex;
+    flex-grow: 1;
 }
 .hidden {
     display: none;
 }
 .grow {
     flex-grow: 1;
+}
+.shadow {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.rounded {
+    border-radius: 1vh;
 }
