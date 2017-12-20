@@ -1,5 +1,6 @@
 // import { Api, Storage } from 'Services/Data'
 
+
 const Menu = {
     current: 0,
     items: [
@@ -22,6 +23,10 @@ const Menu = {
     ],
     isCurrent (index) {
         return index === Menu.current
+    },
+    select (index) {
+        Menu.current = index
+        m.route.set(`/${Menu.items[index].name}`)
     },
 }
 

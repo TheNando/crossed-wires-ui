@@ -1,8 +1,12 @@
-import HomePage from 'Components/HomePage'
+import HudPage from 'Components/HudPage'
+import EngagePage from 'Components/EngagePage'
+import QuizPage from 'Components/QuizPage'
+import BuyPage from 'Components/BuyPage'
 import LoginPage from 'Components/LoginPage'
 
 import './app.css'
 import './media/typicons.css'
+
 
 if (module.hot) {
     module.hot.accept()
@@ -13,7 +17,11 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 m.route(document.body.querySelector('#root'), '/login', {
-    '/': HomePage,
+    '/': HudPage,
+    '/hud': HudPage,
+    '/engage': EngagePage,
+    '/quiz': QuizPage,
+    '/buy': BuyPage,
     '/login': LoginPage,
 })
 
