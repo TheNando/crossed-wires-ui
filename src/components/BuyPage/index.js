@@ -1,13 +1,14 @@
 import MenuBar from 'Components/MenuBar'
 import './style.css'
 
-class HomePage {
+
+class BuyPage {
     view () {
         return m('.page', [
-            m('.content'),
+            m('buy.content', 'Buy'),
             m(MenuBar),
         ])
     }
 }
 
-export default HomePage
+export default BuyPage

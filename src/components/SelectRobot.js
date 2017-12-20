@@ -1,5 +1,6 @@
 import Login from '../services/Login'
 
+
 class SelectRobot {
 
     get menuClass () {
