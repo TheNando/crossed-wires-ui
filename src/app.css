@@ -4,6 +4,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
 }
 body {
     background-color: rgb(26, 26, 26);
@@ -13,7 +19,8 @@ body {
 main {
     background-color:  #40a03d; /*rgb(39, 174, 96); */
     height: 100vh;
-    max-width: calc((9/16) * (100vh));
+    /* max-width: calc((9/16) * (100vh)); */
+    max-width: calc((412/662) * (100vh));
     margin: 0 auto;
 }
 .page {

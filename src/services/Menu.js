@@ -1,33 +1,36 @@
 // import { Api, Storage } from 'Services/Data'
 
+class Menu {
+    constructor () {
+        this.items = [
+            {
+                name: 'hud',
+                icon: 'info',
+            },
+            {
+                name: 'engage',
+                icon: 'power',
+            },
+            {
+                name: 'quiz',
+                icon: 'mortar-board',
+            },
+            {
+                name: 'buy',
+                icon: 'shopping-cart',
+            },
+        ]
+        this.current = this.items.findIndex(item => `#!/${item.name}` === location.hash) || 0
+    }
 
-const Menu = {
-    current: 0,
-    items: [
-        {
-            name: 'hud',
-            icon: 'info',
-        },
-        {
-            name: 'engage',
-            icon: 'power',
-        },
-        {
-            name: 'quiz',
-            icon: 'mortar-board',
-        },
-        {
-            name: 'buy',
-            icon: 'shopping-cart',
-        },
-    ],
     isCurrent (index) {
-        return index === Menu.current
-    },
+        return index === this.current
+    }
+
     select (index) {
-        Menu.current = index
-        m.route.set(`/${Menu.items[index].name}`)
-    },
+        this.current = index
+        m.route.set(`/${this.items[index].name}`)
+    }
 }
 
-export default Menu
+export default new Menu()
