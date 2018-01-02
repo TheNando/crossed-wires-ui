@@ -1,6 +1,9 @@
+import firebase from 'firebase'
+import 'firebase/firestore'
+
 class Api {
     static get URL () {
-        return 'http://localhost:8080/'
+        return 'http://192.168.26.224:8080/'
     }
 
     static get (resource) {
@@ -12,25 +15,49 @@ class Api {
     }
 }
 
-class Firebase {
-    request () {
-        this.url = 'https://firestore.googleapis.com/v1beta1/projects/crossed-wires/databases/(default)/documents/'
+class _Firebase {
+    constructor() {
+        // this.url = 'https://firestore.googleapis.com/v1beta1/projects/crossed-wires/databases/(default)/documents/'
+        firebase.initializeApp({
+            apiKey: 'AIzaSyCf8lVuN4vmNzpo5-tJEfoNAzvQBn4eERI',
+            authDomain: 'crossed-wires.firebaseapp.com',
+            databaseURL: 'https://crossed-wires.firebaseio.com',
+            projectId: 'crossed-wires',
+            storageBucket: 'crossed-wires.appspot.com',
+            messagingSenderId: '261845824943',
+        })
+        this.db = firebase.firestore()
+        this.collections = {}
     }
 
-    static stripFields (item) {
-        return Object.keys(item).forEach(
-            field => item[field] = item[field][Object.keys(item[field])[0]]
-        )
+    _col (collection) {
+        let col = this.collections[collection]
+
+        if (!col) {
+            col = this.collections[collection] = this.db.collection(collection)
+        }
+
+        return col
     }
 
-    static transform (response) {
-        return response.documents.reduce((acc, curr) => {
-            const key = curr.name.substr(curr.name.lastIndexOf('/') + 1)
-            Firebase.stripFields(curr.fields)
-            acc[key] = curr.fields
-            return acc
-        }, {})
+    doc (collection, doc) {
+        return this._col(collection).doc(doc)
     }
+
+    // static stripFields (item) {
+    //     return Object.keys(item).forEach(
+    //         field => item[field] = item[field][Object.keys(item[field])[0]]
+    //     )
+    // }
+
+    // static transform (response) {
+    //     return response.documents.reduce((acc, curr) => {
+    //         const key = curr.name.substr(curr.name.lastIndexOf('/') + 1)
+    //         _Firebase.stripFields(curr.fields)
+    //         acc[key] = curr.fields
+    //         return acc
+    //     }, {})
+    // }
 }
 
 class Storage {
@@ -42,5 +69,7 @@ class Storage {
         return JSON.parse(localStorage.getItem(key))
     }
 }
+
+const Firebase = new _Firebase()
 
 export { Api, Firebase, Storage }

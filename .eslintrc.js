@@ -6,15 +6,15 @@ module.exports = {
         node: true,
     },
     globals: {
-        'm': true
+        'm': true,
     },
     extends: 'eslint:recommended',    
     parserOptions: {
         sourceType: 'module',
-        ecmaVersion: 6,
+        ecmaVersion: 2017,
         ecmaFeatures: {
-            experimentalObjectRestSpread: true
-        }
+            experimentalObjectRestSpread: true,
+        },
     },
     rules: {
         'comma-dangle': ['error', 'always-multiline'],
@@ -24,6 +24,6 @@ module.exports = {
         'semi': ['error', 'never'],
         'no-unused-vars': ['warn'],
         'no-console': 0,
-        'rest-spread-spacing': ["error", "never"]
+        'rest-spread-spacing': ["error", "never"],
     },
 }

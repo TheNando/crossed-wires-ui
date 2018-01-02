@@ -4,7 +4,7 @@ import './style.css'
 
 class MenuBar {
     static selectedItemClass (index) {
-        return Menu.current === index ? '.selected' : ''
+        return Menu.isCurrent(index) ? '.selected' : ''
     }
 
     static menuItemElement (item, index) {
