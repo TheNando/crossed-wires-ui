@@ -1,4 +1,5 @@
-// import { Api, Storage } from 'Services/Data'
+import m from 'mithril'
+// import { Api, Storage } from 'services/Data'
 
 class Menu {
     constructor () {

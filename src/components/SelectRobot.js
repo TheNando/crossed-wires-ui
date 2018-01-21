@@ -1,5 +1,5 @@
-import Login from '../services/Login'
-
+import m from 'mithril'
+import Login from 'services/Login'
 
 class SelectRobot {
 
@@ -23,18 +23,16 @@ class SelectRobot {
                     m('i.typcn.typcn-arrow-sorted-down'),
                 ]
             ),
-            m(this.menuClass,
-                Login.robots.map(
-                    (robot, index) => m('.robot',
-                        { onclick: () => this.selectRobot(index) },
-                        [
-                            m('span.team-color', {style:`background-color:${robot.team}`}),
-                            m('span.team-color', {style:`background-color:${robot.colorHex}`}),
-                            m('span', robot.name),
-                        ]
-                    )
+            m(this.menuClass, Login.robots.map(
+                (robot, index) => m('.robot',
+                    { onclick: () => this.selectRobot(index) },
+                    [
+                        m('span.team-color', {style:`background-color:${robot.team}`}),
+                        m('span.team-color', {style:`background-color:${robot.colorHex}`}),
+                        m('span', robot.name),
+                    ]
                 )
-            ),
+            )),
         ]
     }
 }

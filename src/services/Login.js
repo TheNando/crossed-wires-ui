@@ -1,4 +1,5 @@
-import { Api, Storage, Cache } from 'Services/Data'
+import m from 'mithril'
+import { Api, Storage, Cache } from 'services/Data'
 
 const Login = {
     enabled: false,

@@ -1,7 +1,8 @@
-import MenuBar from 'Components/MenuBar'
-import './QuizPage.css'
+import m from 'mithril'
 
-import { Firebase } from 'Services/Data'
+import MenuBar from 'components/MenuBar'
+import { Firebase } from 'services/Data'
+import './QuizPage.css'
 
 const DURATION = (20 * 1000)
 

@@ -1,3 +1,5 @@
+import m from 'mithril'
+
 import firebase from 'firebase'
 import 'firebase/firestore'
 

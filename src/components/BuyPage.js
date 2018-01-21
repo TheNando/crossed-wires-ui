@@ -1,4 +1,6 @@
-import MenuBar from 'Components/MenuBar'
+import m from 'mithril'
+
+import MenuBar from 'components/MenuBar'
 import './BuyPage.css'
 
 
