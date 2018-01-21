@@ -1,5 +1,5 @@
 import MenuBar from 'Components/MenuBar'
-import './style.css'
+import './HudPage.css'
 
 
 class HudPage {

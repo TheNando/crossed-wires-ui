@@ -1,6 +1,6 @@
 import SelectRobot from 'Components/SelectRobot'
 import Login from 'Services/Login'
-import './style.css'
+import './LoginPage.css'
 
 
 class LoginPage {
