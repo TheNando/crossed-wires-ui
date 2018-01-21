@@ -1,5 +1,4 @@
-import { Api, Storage } from 'Services/Data'
-
+import { Api, Storage, Cache } from 'Services/Data'
 
 const Login = {
     enabled: false,
@@ -25,15 +24,29 @@ const Login = {
             team: Login.selected.team,
         }
         Api.post('login', payload).then(response => {
-            Storage.set('session', response)
+            Storage.set('session', response.session)
             m.route.set('/')
         })
     },
 }
 
-Api.get('login').then(response => {
+// Check for existing session and cache if found
+const { id, user } = Storage.get('session') || {}
+Cache.sessionId = id
+
+if (user) {
+    Cache.name = user.name
+    Cache.handle = user.handle
+    Cache.robot = user.robot
+    Cache.team = user.team
+}
+
+// get login meta
+(async () => {
+    const response = await Api.get('login')
+    Cache.timeOffset = (new Date()).getTime() - response.time
     Object.assign(Login, response)
     Login.robots = Login.robots.sort((r1, r2) => r1.team > r2.team)
-})
+})()
 
 export default Login

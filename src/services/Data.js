@@ -70,6 +70,8 @@ class Storage {
     }
 }
 
+const Cache = {}
+
 const Firebase = new _Firebase()
 
-export { Api, Firebase, Storage }
+export { Api, Firebase, Storage, Cache }
