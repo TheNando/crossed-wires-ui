@@ -1,14 +1,14 @@
 import MenuBar from 'Components/MenuBar'
-import './style.css'
+import './BuyPage.css'
 
 
-class EngagePage {
+class BuyPage {
     view () {
         return m('.page', [
-            m('engage.content', 'Engage'),
+            m('buy.content', 'Buy'),
             m(MenuBar),
         ])
     }
 }
 
-export default EngagePage
+export default BuyPage

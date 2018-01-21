@@ -1,5 +1,5 @@
 import Menu from 'Services/Menu'
-import './style.css'
+import './MenuBar.css'
 
 
 class MenuBar {
