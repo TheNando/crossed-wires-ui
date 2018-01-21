@@ -1,4 +1,6 @@
-import Menu from 'Services/Menu'
+import m from 'mithril'
+
+import Menu from 'services/Menu'
 import './MenuBar.css'
 
 

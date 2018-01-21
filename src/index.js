@@ -1,8 +1,11 @@
-import HudPage from 'Components/HudPage'
-import EngagePage from 'Components/EngagePage'
-import QuizPage from 'Components/QuizPage'
-import BuyPage from 'Components/BuyPage'
-import LoginPage from 'Components/LoginPage'
+import m from 'mithril'
+import 'babel-polyfill'
+
+import HudPage from 'components/HudPage'
+import EngagePage from 'components/EngagePage'
+import QuizPage from 'components/QuizPage'
+import BuyPage from 'components/BuyPage'
+import LoginPage from 'components/LoginPage'
 
 import './app.css'
 import './media/typicons.css'
@@ -16,7 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
     console.log('In development mode!')
 }
 
-m.route(document.body.querySelector('#root'), '/login', {
+m.route(document.getElementById('root'), '/login', {
     '/': HudPage,
     '/hud': HudPage,
     '/engage': EngagePage,
