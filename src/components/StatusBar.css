@@ -1,0 +1,11 @@
+status {
+    align-items: center;
+    background-color: rgb(55, 136, 52);
+    color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: row;
+    font-size: 3vh;
+    height: 7.25vh;
+    padding: 0 2.75vh;
+}
+

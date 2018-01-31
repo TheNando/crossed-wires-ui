@@ -1,5 +1,6 @@
 import m from 'mithril'
 
+import StatusBar from 'components/StatusBar'
 import MenuBar from 'components/MenuBar'
 import { Firebase } from 'services/Data'
 import './QuizPage.css'
@@ -8,7 +9,7 @@ const DURATION = (20 * 1000)
 
 class QuizPage {
     updateTimer () {
-        const timeLeft = this.question.expires - (new Date()).getTime()
+        const timeLeft = this.question.expires - Date.now()
         const percent =  (timeLeft / DURATION) * 100
         this.timerElement.style.width = `${percent}%`
         this.stopTimer = window.requestAnimationFrame(this.updateTimer.bind(this))
@@ -41,6 +42,7 @@ class QuizPage {
 
     view () {
         return m('.page', [
+            m(StatusBar),
             m('quiz.content', [
                 m('.question-container', [
                     m('.text', this.question.text),
