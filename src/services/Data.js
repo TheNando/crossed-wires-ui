@@ -1,5 +1,6 @@
 import m from 'mithril'
 
+import Config from 'services/Config'
 import firebase from 'firebase'
 import 'firebase/firestore'
 
@@ -20,14 +21,7 @@ class Api {
 class _Firebase {
   constructor() {
     // this.url = 'https://firestore.googleapis.com/v1beta1/projects/crossed-wires/databases/(default)/documents/'
-    firebase.initializeApp({
-      apiKey: '',
-      authDomain: '',
-      databaseURL: '',
-      projectId: '',
-      storageBucket: '',
-      messagingSenderId: '',
-    })
+    firebase.initializeApp(Config.firebase)
     this.db = firebase.firestore()
     this.collections = {}
   }

@@ -6,6 +6,7 @@
 /node_modules
 
 # misc
+Config.js
 firebase.js
 npm-debug.log*
 
