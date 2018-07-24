@@ -4,7 +4,7 @@ import './StatusBar.css'
 
 class StatusBar {
   view() {
-    return <status>Staus Bar</status>
+    return <status>Crossed Wires</status>
   }
 }
 

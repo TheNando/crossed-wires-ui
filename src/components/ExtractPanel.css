@@ -1,0 +1,48 @@
+extract .question {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 3vh;
+  padding: 0 6vh 2vh;
+  text-align: center;
+}
+
+extract .choices {
+  border-radius: 0.75vh;
+  margin: 0 4vh;
+}
+
+extract .choice {
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  text-transform: lowercase;
+  margin-bottom: 1px;
+  padding: 2vh 1vh;
+}
+
+extract .choice:first-child {
+  border-radius: 0.75vh 0.75vh 0 0;
+}
+
+extract .choice:last-child {
+  border-radius: 0 0 0.75vh 0.75vh;
+}
+
+extract .choice:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: 0.2s ease-in background-color;
+}
+
+extract .choice:active {
+  background-color: rgba(255, 255, 255, 0.9);
+  transition-duration: 0s;
+}
+
+extract .choice-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 2.5vh;
+  text-align: center;
+}
+
+extract .choice:hover extract .choice-text {
+  color: rgba(0, 0, 0, 0.7);
+  transition: 0.2s ease-in color;
+}

@@ -1,15 +1,17 @@
 import m from 'mithril'
 
-import QuizCard from 'components/QuizCard'
+import ExtractPanel from 'components/ExtractPanel'
 import StatusBar from 'components/StatusBar'
+import NavPanel from 'components/NavPanel'
 import './MainPage.css'
 
 class MainPage {
   view() {
     return (
-      <main class="page">
+      <main>
         <StatusBar />
-        <QuizCard />
+        <ExtractPanel />
+        <NavPanel />
       </main>
     )
   }

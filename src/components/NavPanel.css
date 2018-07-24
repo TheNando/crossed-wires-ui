@@ -1,0 +1,33 @@
+nav {
+  outline: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2vh 2vh 0;
+}
+
+nav-item {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  font-size: 3vh;
+  margin-bottom: 2vh;
+  padding: 0 2vh;
+  height: 6vh;
+  flex: 1 1 40%;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+nav-item:nth-child(odd) {
+  justify-content: flex-end;
+  margin-right: 1vh;
+}
+
+nav-item:nth-child(even) {
+  justify-content: flex-start;
+  margin-left: 1vh;
+}
+
+nav-item.selected {
+  background-color: blue;
+  color: white;
+}

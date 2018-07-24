@@ -18,21 +18,15 @@ body {
 }
 main {
   background-color: #40a03d; /*rgb(39, 174, 96); */
-  height: 100vh;
-  /* max-width: calc((9/16) * (100vh)); */
-  max-width: calc((412 / 662) * (100vh));
-  margin: 0 auto;
-}
-.page {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: calc((412 / 662) * (100vh));
+  /* max-width: calc((9/16) * (100vh)); */
 }
-.content {
-  display: flex;
-  flex-grow: 1;
-}
+
 .hidden {
   display: none;
 }
@@ -41,6 +35,9 @@ main {
 }
 .shadow {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.shadow-large {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.25), 0 10px 12px rgba(0, 0, 0, 0.2);
 }
 .rounded {
   border-radius: 1vh;
