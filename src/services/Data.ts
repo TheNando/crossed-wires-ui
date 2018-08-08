@@ -1,7 +1,7 @@
 import m from 'mithril'
 
-import Config from 'services/Config'
-import firebase from 'firebase'
+import Config from './Config'
+import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 class Api {
@@ -18,13 +18,16 @@ class Api {
   }
 }
 
-class _Firebase {
-  constructor() {
-    // this.url = 'https://firestore.googleapis.com/v1beta1/projects/crossed-wires/databases/(default)/documents/'
-    firebase.initializeApp(Config.firebase)
-    this.db = firebase.firestore()
-    this.collections = {}
-  }
+firebase.initializeApp(Config.firebase)
+
+const firestore = firebase.firestore()
+const settings = { timestampsInSnapshots: true }
+firestore.settings(settings)
+
+class Firebase {
+  collections = {}
+  db = firestore
+  //url = 'https://firestore.googleapis.com/v1beta1/projects/crossed-wires/databases/(default)/documents/'
 
   _col(collection) {
     let col = this.collections[collection]
@@ -62,12 +65,12 @@ class Storage {
   }
 
   static get(key) {
-    return JSON.parse(localStorage.getItem(key))
+    return JSON.parse(localStorage.getItem(key) || '')
   }
 }
 
-const Cache = {}
+const Cache = {} as Cache
 
-const Firebase = new _Firebase()
+const FirebaseSingleton = new Firebase()
 
-export { Api, Firebase, Storage, Cache }
+export { Api, FirebaseSingleton as Firebase, Storage, Cache }

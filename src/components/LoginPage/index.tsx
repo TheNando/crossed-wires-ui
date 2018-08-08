@@ -1,7 +1,7 @@
 import m from 'mithril'
 
-import SelectRobot from 'components/LoginPage/SelectRobot'
-import Login from 'services/Login'
+import SelectRobot from './SelectRobot'
+import Login from '../../services/Login'
 import './style.css'
 
 class LoginPage {

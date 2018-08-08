@@ -1,9 +1,11 @@
 import m from 'mithril'
 
-import { Firebase } from 'services/Data'
+import { Firebase } from '../services/Data'
 import './ExtractPanel.css'
 
 class ExtractPanel {
+  pause: Function = () => null
+
   question = {
     answer: '',
     category: '',

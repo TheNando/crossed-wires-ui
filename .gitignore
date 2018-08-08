@@ -1,13 +1,13 @@
 # compiled output
 /.cache
+/build
 /dist
 
 # dependencies
 /node_modules
 
 # misc
-Config.js
-firebase.js
+Config.ts
 npm-debug.log*
 
 # mac
