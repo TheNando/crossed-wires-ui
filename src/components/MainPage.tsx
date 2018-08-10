@@ -1,8 +1,8 @@
 import m from 'mithril'
 
-import ExtractPanel from 'components/ExtractPanel'
-import StatusBar from 'components/StatusBar'
-import NavPanel from 'components/NavPanel'
+import ExtractPanel from './ExtractPanel'
+import StatusBar from './StatusBar'
+import NavPanel from './NavPanel'
 import './MainPage.css'
 
 class MainPage {

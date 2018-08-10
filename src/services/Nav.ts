@@ -1,5 +1,3 @@
-import m from 'mithril'
-
 class Nav {
   current = { name: 'assess' }
 
@@ -31,7 +29,7 @@ class Nav {
   ]
 
   select = (name) => {
-    this.current = this.items.find((item) => item.name === name)
+    this.current = this.items.find((item) => item.name === name) || this.current
   }
 
   selectedClass = (name) => (this.current.name === name ? 'selected' : '')

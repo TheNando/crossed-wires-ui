@@ -1,12 +1,14 @@
 import m from 'mithril'
-import Login from 'services/Login'
+import Login from '../../services/Login'
 
 class SelectRobot {
+  showMenu: boolean = false
+
   get menuClass() {
     return 'robots' + (this.showMenu ? '' : ' hidden')
   }
 
-  selectRobot(index) {
+  selectRobot(index: number) {
     Login.selectRobot(index)
     this.showMenu = false
   }

@@ -1,6 +1,6 @@
 import m from 'mithril'
 
-import Nav from 'services/Nav'
+import Nav from '../services/Nav'
 import './NavPanel.css'
 
 class NavPanel {

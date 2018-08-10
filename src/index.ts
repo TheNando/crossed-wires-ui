@@ -1,15 +1,16 @@
 import m from 'mithril'
-import 'babel-polyfill'
 
-import MainPage from 'components/MainPage'
-import LoginPage from 'components/LoginPage'
+import MainPage from './components/MainPage'
+import LoginPage from './components/LoginPage'
 
 import './app.css'
 import './media/typicons.css'
 
-if (module.hot) {
+const hmrModule = module as HMR
+
+if (hmrModule.hot) {
   console.log('HMR Enabled')
-  module.hot.accept()
+  hmrModule.hot.accept()
 }
 
 if (process.env.NODE_ENV !== 'production') {
@@ -21,7 +22,7 @@ m.route(document.body, '/login', {
   '/login': LoginPage,
 })
 
-if (localStorage.session) {
+if (window.localStorage.getItem('session')) {
   m.route.set('/')
 } else {
   m.route.set('/login')
