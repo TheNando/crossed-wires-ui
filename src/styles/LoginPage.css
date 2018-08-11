@@ -26,14 +26,20 @@ login button {
   width: 100%;
 }
 
-login label > i {
-  background-color: rgba(255, 255, 255, 0.8);
-  font-size: 4vh;
-  padding: 0 1vh;
+login section {
+  display: flex;
 }
 
-login input,
-login .selected-robot {
+login label > i {
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  font-size: 4vh;
+  padding: 0 1vh;
+  line-height: 100%;
+}
+
+login input {
   background-color: rgba(255, 255, 255, 0.9);
   border: none;
   color: rgba(0, 0, 0, 0.7);
@@ -41,47 +47,6 @@ login .selected-robot {
   outline: none;
   padding: 0 2vh;
   width: 100%;
-}
-
-login .robot,
-login .selected-robot {
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-login .selected-robot {
-  line-height: 6.5vh;
-  padding: 0 1.5vh;
-}
-
-login .robots {
-  background-color: #e9f7f0;
-  border-radius: 1vh;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  position: fixed;
-  width: calc((9 / 16) * (64vh));
-  max-width: 628px;
-}
-
-login .robot {
-  font-size: 2vh;
-  height: 5vh;
-  line-height: 5vh;
-  padding: 0 2vh;
-}
-
-login .team-color {
-  display: inline-block;
-  width: 2vh;
-  height: 2.5vh;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.36);
-}
-
-.team-color + .team-color {
-  margin-right: 1vh;
 }
 
 login input[disabled] {

@@ -1,38 +1,54 @@
 class Nav {
-  current = { name: 'assess' }
+  private _current = 'quiz'
 
-  items = [
-    {
-      name: 'assess',
+  items = {
+    hud: {
       icon: 'info',
+      label: 'assess',
+      name: 'hud',
     },
-    {
-      name: 'engage',
+    pilot: {
+      label: 'engage',
       icon: 'power',
+      name: 'pilot',
     },
-    {
-      name: 'extract',
+    quiz: {
+      label: 'extract',
       icon: 'mortar-board',
+      name: 'quiz',
     },
-    {
-      name: 'aquire',
+    shop: {
+      label: 'aquire',
       icon: 'shopping-cart',
+      name: 'shop',
     },
-    {
+    install: {
+      label: 'install',
+      icon: '',
       name: 'install',
-      icon: '',
     },
-    {
+    repair: {
+      label: 'repair',
+      icon: '',
       name: 'repair',
-      icon: '',
     },
-  ]
-
-  select = (name) => {
-    this.current = this.items.find((item) => item.name === name) || this.current
   }
 
-  selectedClass = (name) => (this.current.name === name ? 'selected' : '')
+  get current() {
+    return this.items[this._current]
+  }
+
+  get itemsArray() {
+    return Object.values(this.items)
+  }
+
+  select(name) {
+    this._current = name || this._current
+  }
+
+  selectedClass(name) {
+    return this.current.name === name ? 'selected' : ''
+  }
 }
 
 export default new Nav()

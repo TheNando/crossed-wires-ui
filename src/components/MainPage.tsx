@@ -3,7 +3,7 @@ import m from 'mithril'
 import ExtractPanel from './ExtractPanel'
 import StatusBar from './StatusBar'
 import NavPanel from './NavPanel'
-import './MainPage.css'
+import '../styles/MainPage.css'
 
 class MainPage {
   view() {

@@ -6,11 +6,9 @@ import LoginPage from './components/LoginPage'
 import './app.css'
 import './media/typicons.css'
 
-const hmrModule = module as HMR
-
-if (hmrModule.hot) {
+if (module.hot) {
   console.log('HMR Enabled')
-  hmrModule.hot.accept()
+  module.hot.accept()
 }
 
 if (process.env.NODE_ENV !== 'production') {

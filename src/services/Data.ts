@@ -6,7 +6,7 @@ import 'firebase/firestore'
 
 class Api {
   static get URL() {
-    return 'http://192.168.26.224:8080/'
+    return 'http://localhost:8080/'
   }
 
   static get(resource) {
@@ -65,11 +65,11 @@ class Storage {
   }
 
   static get(key) {
-    return JSON.parse(localStorage.getItem(key) || '')
+    return JSON.parse(localStorage.getItem(key) || '{}')
   }
 }
 
-const Cache = {} as Cache
+const Cache = {}
 
 const FirebaseSingleton = new Firebase()
 

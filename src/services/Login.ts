@@ -6,12 +6,12 @@ class Login {
   handle = ''
   index = 0
   name = ''
-  robots = [] as Array<Robot>
+  robot = null
   showMenu = false
 
   constructor() {
     // Check for existing session and cache if found
-    const { id, user }: Session = Storage.get('session') || {}
+    const { id, user } = Storage.get('session') || {}
     Cache.sessionId = id
 
     if (user) {
@@ -23,35 +23,32 @@ class Login {
 
     // get login meta
     ;(async () => {
-      const response = (await Api.get('login')) as ApiLogin
+      const response = await Api.get('login')
       Cache.timeOffset = new Date().getTime() - response.time
-      Object.assign(Login, response)
+      Object.assign(this, response)
       this.robots = this.robots.sort((r1, r2) => (r1.team > r2.team ? 1 : -1))
+      this.robot = this.robots[0]
     })()
   }
 
-  get selected() {
-    return this.robots.length ? this.robots[this.index] : ({} as Robot)
+  selectRobot = (index) => {
+    this.robot = this.robots[index]
   }
 
-  selectRobot(index) {
-    this.index = index
-  }
-
-  setName(value) {
+  setName = (value) => {
     this.name = value
     this.enabled = !!value.match(/.+\..+/)
   }
 
-  async submit() {
+  submit = async () => {
     const payload = {
-      name: this.name,
+      name: this.name.toLowerCase(),
       handle: this.handle,
-      robot: this.selected.name,
-      team: this.selected.team,
+      robot: this.robot.name,
+      team: this.robot.team,
     }
 
-    const response = (await Api.post('login', payload)) as ApiLogin
+    const response = await Api.post('login', payload)
 
     Storage.set('session', response.session)
     m.route.set('/')

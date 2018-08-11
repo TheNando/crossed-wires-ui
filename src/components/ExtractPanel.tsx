@@ -1,7 +1,7 @@
 import m from 'mithril'
 
 import { Firebase } from '../services/Data'
-import './ExtractPanel.css'
+import '../styles/ExtractPanel.css'
 
 class ExtractPanel {
   pause: Function = () => null

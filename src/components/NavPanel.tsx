@@ -1,14 +1,23 @@
 import m from 'mithril'
 
 import Nav from '../services/Nav'
-import './NavPanel.css'
+import '../styles/NavPanel.css'
 
 class NavPanel {
+  selectItem(event) {
+    Nav.select(event.target.textContent)
+  }
+
   view() {
     return (
       <nav>
-        {Nav.items.map((item) => (
-          <nav-item class={Nav.selectedClass(item.name)}>{item.name}</nav-item>
+        {Nav.itemsArray.map((item) => (
+          <nav-item
+            class={Nav.selectedClass(item.name)}
+            onclick={this.selectItem}
+          >
+            {item.name}
+          </nav-item>
         ))}
       </nav>
     )

@@ -1,6 +1,6 @@
 import m from 'mithril'
 
-import './StatusBar.css'
+import '../styles/StatusBar.css'
 
 class StatusBar {
   view() {
