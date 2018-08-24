@@ -1,6 +1,6 @@
 import m from 'mithril'
 
-import { Firebase } from '../services/Data'
+import { Api, Firebase } from '../services/Data'
 import '../styles/ExtractPanel.css'
 
 class ExtractPanel {
@@ -16,9 +16,11 @@ class ExtractPanel {
   }
 
   oninit() {
-    this.pause = Firebase.doc('question', 'current').onSnapshot(
-      (doc) => (this.question = doc.data()) && m.redraw()
-    )
+    this.pause = Firebase.doc('question', 'current').onSnapshot((doc) => {
+      const { answer, ...question } = doc.data()
+      this.question = question
+      m.redraw()
+    })
   }
 
   // suspend real-time updates when page is not in view
@@ -26,8 +28,13 @@ class ExtractPanel {
     this.pause()
   }
 
+  submitAnswer(event) {
+    const answer = event.target.innerText.trim()
+    Api.post('answer', { answer })
+  }
+
   view() {
-    const { question } = this
+    const { question, submitAnswer } = this
 
     return (
       <extract>
@@ -37,7 +44,7 @@ class ExtractPanel {
         {/* Choices */}
         <div class="choices shadow-large">
           {question.choices.map((option) => (
-            <div class="choice">
+            <div class="choice" onclick={submitAnswer}>
               <div class="choice-text">{option}</div>
             </div>
           ))}

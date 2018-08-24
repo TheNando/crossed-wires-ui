@@ -20,7 +20,9 @@ m.route(document.body, '/login', {
   '/login': LoginPage,
 })
 
-if (window.localStorage.getItem('session')) {
+const session = window.localStorage.getItem('session')
+
+if (session) {
   m.route.set('/')
 } else {
   m.route.set('/login')

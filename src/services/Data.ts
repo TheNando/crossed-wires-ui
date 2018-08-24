@@ -5,16 +5,28 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 class Api {
-  static get URL() {
-    return 'http://localhost:8080/'
+  url = 'http://localhost:8080/'
+  headers = {}
+
+  get(resource) {
+    return m.request({
+      method: 'GET',
+      url: this.url + resource,
+      headers: this.headers,
+    })
   }
 
-  static get(resource) {
-    return m.request({ method: 'GET', url: Api.URL + resource })
+  post(resource, data) {
+    return m.request({
+      method: 'POST',
+      url: this.url + resource,
+      data,
+      headers: this.headers,
+    })
   }
 
-  static post(resource, data) {
-    return m.request({ method: 'POST', url: Api.URL + resource, data: data })
+  setHeaders() {
+    this.headers = { Authorization: `Token ${Cache.sessionId}` }
   }
 }
 
@@ -69,8 +81,21 @@ class Storage {
   }
 }
 
+const getData = (event, key) => event.target
+
+const getText = (event) => event.target.innerText.trim()
+
+const ApiSingleton = new Api()
+
 const Cache = {}
 
 const FirebaseSingleton = new Firebase()
 
-export { Api, FirebaseSingleton as Firebase, Storage, Cache }
+export {
+  ApiSingleton as Api,
+  FirebaseSingleton as Firebase,
+  Storage,
+  Cache,
+  getData,
+  getText,
+}

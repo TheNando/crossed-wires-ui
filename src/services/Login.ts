@@ -19,6 +19,7 @@ class Login {
       Cache.handle = user.handle
       Cache.robot = user.robot
       Cache.team = user.team
+      Api.setHeaders()
     }
 
     // get login meta
@@ -51,6 +52,7 @@ class Login {
     const response = await Api.post('login', payload)
 
     Storage.set('session', response.session)
+    // TODO: Set Api Headers immediatly after login
     m.route.set('/')
   }
 }
