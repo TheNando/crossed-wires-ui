@@ -4,6 +4,8 @@ import Config from './Config'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 
+/** Api Requests */
+
 class Api {
   url = 'http://localhost:8080/'
   headers = {}
@@ -25,10 +27,14 @@ class Api {
     })
   }
 
-  setHeaders() {
-    this.headers = { Authorization: `Token ${Cache.sessionId}` }
+  setHeaders(sessionId) {
+    this.headers = { Authorization: `Token ${sessionId}` }
   }
 }
+
+const ApiSingleton = new Api()
+
+/** Firebase */
 
 firebase.initializeApp(Config.firebase)
 
@@ -71,6 +77,10 @@ class Firebase {
   // }
 }
 
+const FirebaseSingleton = new Firebase()
+
+/** Local Storage Interface */
+
 class Storage {
   static set(key, obj) {
     localStorage.setItem(key, JSON.stringify(obj))
@@ -81,21 +91,52 @@ class Storage {
   }
 }
 
-const getData = (event, key) => event.target
+/** Session cache */
+
+class Session {
+  id: string
+  name: string
+  handle: string
+  robot: string
+  team: string
+
+  constructor() {
+    // Check for existing session and cache if found
+    this.load(Storage.get('session'))
+  }
+
+  load(session) {
+    const { id, user } = session
+
+    if (!id || !user) {
+      return
+    }
+
+    this.id = id
+    this.name = user.name
+    this.handle = user.handle
+    this.robot = user.robot
+    this.team = user.team
+    ApiSingleton.setHeaders(this.id)
+  }
+
+  set(session) {
+    this.load(session)
+    Storage.set('session', session)
+  }
+}
+
+const SessionSingleton = new Session()
+
+// const getData = (event, key) => event.target
 
 const getText = (event) => event.target.innerText.trim()
-
-const ApiSingleton = new Api()
-
-const Cache = {}
-
-const FirebaseSingleton = new Firebase()
 
 export {
   ApiSingleton as Api,
   FirebaseSingleton as Firebase,
+  SessionSingleton as Session,
   Storage,
-  Cache,
-  getData,
+  // getData,
   getText,
 }

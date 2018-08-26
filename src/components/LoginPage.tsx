@@ -1,15 +1,16 @@
 import m from 'mithril'
 
-import SelectRobot from './SelectRobot'
 import Login from '../services/Login'
+import SelectRobot from './SelectRobot'
 import '../styles/LoginPage.css'
 
 class LoginPage {
   view() {
-    const { enabled, handle, name, setName, submit } = Login
-    console.log('Rendering LoginPage')
+    const { enabled, handle, name, robot, setName, submit } = Login
 
-    return (
+    return !robot ? (
+      <div>Loading...</div>
+    ) : (
       <login>
         <div class="title">crossed wires</div>
         <label class="shadow rounded">

@@ -15,12 +15,12 @@ class SelectRobot {
     this.displayMenu = false
   }
 
-  toggleMenu = (event) => {
+  toggleMenu = () => {
     this.displayMenu = !this.displayMenu
   }
 
   view() {
-    const { robots, robot, selectRobot } = Login
+    const { robots, robot } = Login
 
     if (!robots) {
       return (
@@ -49,7 +49,7 @@ class SelectRobot {
         {/* All Robots Options */}
         <div class={this.menuClass}>
           {robots.map((robot, index) => (
-            <div class="robot" onclick={() => this.selectRobot(index)}>
+            <div class="robot" onclick={() => this.selectRobot(robot)}>
               <span
                 class="team-color"
                 style={{ 'background-color': robot.team }}

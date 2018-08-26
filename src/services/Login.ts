@@ -1,5 +1,4 @@
-import m from 'mithril'
-import { Api, Storage, Cache } from './Data'
+import { Api, Session } from './Data'
 
 class Login {
   enabled = false
@@ -7,33 +6,22 @@ class Login {
   index = 0
   name = ''
   robot = null
+  robots = null
   showMenu = false
 
   constructor() {
-    // Check for existing session and cache if found
-    const { id, user } = Storage.get('session') || {}
-    Cache.sessionId = id
-
-    if (user) {
-      Cache.name = user.name
-      Cache.handle = user.handle
-      Cache.robot = user.robot
-      Cache.team = user.team
-      Api.setHeaders()
-    }
-
     // get login meta
     ;(async () => {
       const response = await Api.get('login')
-      Cache.timeOffset = new Date().getTime() - response.time
+      // Session.timeOffset = new Date().getTime() - response.time
       Object.assign(this, response)
       this.robots = this.robots.sort((r1, r2) => (r1.team > r2.team ? 1 : -1))
       this.robot = this.robots[0]
     })()
   }
 
-  selectRobot = (index) => {
-    this.robot = this.robots[index]
+  selectRobot = (robot) => {
+    this.robot = robot
   }
 
   setName = (value) => {
@@ -51,9 +39,7 @@ class Login {
 
     const response = await Api.post('login', payload)
 
-    Storage.set('session', response.session)
-    // TODO: Set Api Headers immediatly after login
-    m.route.set('/')
+    Session.set(response.session)
   }
 }
 

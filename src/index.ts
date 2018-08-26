@@ -1,7 +1,6 @@
 import m from 'mithril'
 
 import MainPage from './components/MainPage'
-import LoginPage from './components/LoginPage'
 
 import './app.css'
 import './media/typicons.css'
@@ -15,15 +14,4 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('In development mode!')
 }
 
-m.route(document.body, '/login', {
-  '/': MainPage,
-  '/login': LoginPage,
-})
-
-const session = window.localStorage.getItem('session')
-
-if (session) {
-  m.route.set('/')
-} else {
-  m.route.set('/login')
-}
+m.mount(document.body, MainPage)

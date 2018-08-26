@@ -1,6 +1,6 @@
 import m from 'mithril'
 
-import { Api, Firebase } from '../services/Data'
+import { Api, Firebase, getText } from '../services/Data'
 import '../styles/ExtractPanel.css'
 
 class ExtractPanel {
@@ -10,15 +10,15 @@ class ExtractPanel {
     answer: '',
     category: '',
     choices: [],
-    expires: 0,
     nextCategory: '',
     text: '',
   }
 
   oninit() {
     this.pause = Firebase.doc('question', 'current').onSnapshot((doc) => {
-      const { answer, ...question } = doc.data()
-      this.question = question
+      // const { answer, ...question } = doc.data()
+      // this.question = question
+      this.question = doc.data()
       m.redraw()
     })
   }
@@ -29,7 +29,8 @@ class ExtractPanel {
   }
 
   submitAnswer(event) {
-    const answer = event.target.innerText.trim()
+    const answer = getText(event)
+
     Api.post('answer', { answer })
   }
 
@@ -45,7 +46,10 @@ class ExtractPanel {
         <div class="choices shadow-large">
           {question.choices.map((option) => (
             <div class="choice" onclick={submitAnswer}>
-              <div class="choice-text">{option}</div>
+              <div class="choice-text">
+                {question.answer === option && '*'}
+                {option}
+              </div>
             </div>
           ))}
         </div>
