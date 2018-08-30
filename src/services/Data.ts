@@ -128,7 +128,7 @@ class Session {
 
 const SessionSingleton = new Session()
 
-// const getData = (event, key) => event.target
+const getData = (event, key) => event.currentTarget.dataset[key]
 
 const getText = (event) => event.target.innerText.trim()
 
@@ -137,6 +137,6 @@ export {
   FirebaseSingleton as Firebase,
   SessionSingleton as Session,
   Storage,
-  // getData,
+  getData,
   getText,
 }

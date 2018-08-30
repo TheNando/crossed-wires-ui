@@ -1,6 +1,6 @@
 import m from 'mithril'
 
-import { Api, Firebase, getText } from '../services/Data'
+import { Api, Firebase, getData, Session } from '../services/Data'
 import '../styles/ExtractPanel.css'
 
 class ExtractPanel {
@@ -29,13 +29,14 @@ class ExtractPanel {
   }
 
   submitAnswer(event) {
-    const answer = getText(event)
-
-    Api.post('answer', { answer })
+    const answer = parseInt(getData(event, 'index'), 10)
+    Api.post('answer', { answer, robot: Session.robot })
+    event.redraw = false
   }
 
   view() {
     const { question, submitAnswer } = this
+    const answerStyle = (index) => (question.answer === index ? ' answer' : '')
 
     return (
       <extract>
@@ -44,14 +45,13 @@ class ExtractPanel {
 
         {/* Choices */}
         <div class="choices shadow-large">
-          {question.choices.map((option) => (
-            <div class="choice" onclick={submitAnswer}>
-              <div class="choice-text">
-                {question.answer === option && '*'}
-                {option}
+          {question.choices
+            .map((option, index) => (
+              <div class="choice" onclick={submitAnswer} data-index={index}>
+                <div class={'choice-text' + answerStyle(index)}>{option}</div>
               </div>
-            </div>
-          ))}
+            ))
+            .sort((a, b) => (Math.random() > 0.5 ? 1 : -1))}
         </div>
       </extract>
     )
